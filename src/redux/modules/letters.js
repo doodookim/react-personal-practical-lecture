@@ -19,6 +19,7 @@ import fakeData from 'fakeData.json';
 
 const initialState = fakeData;
 
+// reducer
 // const letters = (state = initialState, action) => {
 //   switch (action.type) {
 //     case ADD_LETTER:
@@ -53,9 +54,10 @@ const aespaSlice = createSlice({
       return state.filter((letter) => letter.id !== action.payload);
     },
     editLetter: (state, action) => {
+      const { id, editingText } = action.payload;
       return state.map((letter) => {
-        if (letter.id === action.payload) {
-          return { ...letter, isDone: !letter.isDone };
+        if (letter.id === id) {
+          return { ...letter, content: editingText };
         }
         return letter;
       });
@@ -65,6 +67,7 @@ const aespaSlice = createSlice({
 
 export const { addLetter, deleteLetter, editLetter } = aespaSlice.actions;
 export default aespaSlice.reducer;
+
 // 순수 리덕스에서는 !
 // action creator를 export했음
 // reducer를 export 했음

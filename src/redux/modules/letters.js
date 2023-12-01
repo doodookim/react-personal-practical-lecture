@@ -18,31 +18,6 @@ import fakeData from 'fakeData.json';
 // };
 
 const initialState = fakeData;
-
-// reducer
-// const letters = (state = initialState, action) => {
-//   switch (action.type) {
-//     case ADD_LETTER:
-//       const newLetter = action.payload;
-//       return [newLetter, ...state];
-//     case DELETE_LETTER:
-//       const letterId = action.payload;
-//       return state.filter((letter) => letter.id !== letterId);
-//     case EDIT_LETTER:
-//       const { id, editingText } = action.payload;
-//       return state.map((letter) => {
-//         if (letter.id === id) {
-//           return { ...letter, content: editingText };
-//         }
-//         return letter;
-//       });
-//     default:
-//       return state;
-//   }
-// };
-
-// export default letters;
-
 const aespaSlice = createSlice({
   name: 'letters',
   initialState,
@@ -67,6 +42,30 @@ const aespaSlice = createSlice({
 
 export const { addLetter, deleteLetter, editLetter } = aespaSlice.actions;
 export default aespaSlice.reducer;
+
+// reducer
+// const letters = (state = initialState, action) => {
+//   switch (action.type) {
+//     case ADD_LETTER:
+//       const newLetter = action.payload;
+//       return [newLetter, ...state];
+//     case DELETE_LETTER:
+//       const letterId = action.payload;
+//       return state.filter((letter) => letter.id !== letterId);
+//     case EDIT_LETTER:
+//       const { id, editingText } = action.payload;
+//       return state.map((letter) => {
+//         if (letter.id === id) {
+//           return { ...letter, content: editingText };
+//         }
+//         return letter;
+//       });
+//     default:
+//       return state;
+//   }
+// };
+
+// export default letters;
 
 // 순수 리덕스에서는 !
 // action creator를 export했음

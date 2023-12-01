@@ -1,13 +1,26 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState } from 'react';
 import LoginModal from 'components/common/LoginModal';
 import JoinModal from 'components/common/JoinModal';
 
 function Login() {
+  const [loginModalOpen, setLoginModalOpen] = useState(true);
+  const [joinModalOpen, setJoinModalOpen] = useState(false);
+
+  const toggleLoginModal = () => {
+    setLoginModalOpen(true);
+    setJoinModalOpen(false);
+  };
+
+  const toggleJoinModal = () => {
+    setLoginModalOpen(false);
+    setJoinModalOpen(true);
+  };
+
   return (
     <Container>
-      <LoginModal />
-      <JoinModal />
+      {loginModalOpen && <LoginModal onToggleJoin={toggleJoinModal} />}
+      {joinModalOpen && <JoinModal onToggleLogin={toggleLoginModal} />}
     </Container>
   );
 }

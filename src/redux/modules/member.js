@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const SET_MEMBER = 'member/SET_MEMBER';
+// const SET_MEMBER = 'member/SET_MEMBER';
 
 // export const setMember = (payload) => {
 //   return { type: SET_MEMBER, payload };

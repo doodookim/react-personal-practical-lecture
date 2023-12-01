@@ -1,23 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-export default function JoinModal({ onClose, onToggleLogin }) {
-  const LoginModalHandler = () => {
-    onClose();
+export default function JoinModal({ onToggleLogin }) {
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState('');
+
+  const joinHandler = (e) => {
+    e.preventDefault();
+    if (id.length < 4 || password.length < 4) {
+      return alert('4자 이상 입력하세요.');
+    } else if (nickname.length < 1) {
+      return alert('닉네임은 1자 이상 입력하세요.');
+    }
   };
+
   return (
     <JoinForm>
-      <CloseButton>X</CloseButton>
+      {/* <CloseButton>X</CloseButton> */}
       <JoinText>회원가입</JoinText>
-      <InputInfo placeholder='아이디(4~10글자)'></InputInfo>
-      <InputInfo type='password' placeholder='비밀번호(4~15글자)'></InputInfo>
-      <InputInfo placeholder='닉네임(1~10글자)'></InputInfo>
+      <InputInfo
+        minLength={4}
+        maxLength={10}
+        type='text'
+        placeholder='아이디(4~10글자)'
+        value={id}
+        onChange={(event) => {
+          setId(event.target.value);
+        }}
+      ></InputInfo>
+      <InputInfo
+        minLength={4}
+        maxLength={15}
+        type='password'
+        placeholder='비밀번호(4~15글자)'
+        value={password}
+        onChange={(event) => {
+          setPassword(event.target.value);
+        }}
+      ></InputInfo>
+      <InputInfo
+        minLength={1}
+        maxLength={10}
+        type='text'
+        placeholder='닉네임(1~10글자)'
+        value={nickname}
+        onChange={(event) => {
+          setNickname(event.target.value);
+        }}
+      ></InputInfo>
 
       <ButtonContainer>
-        <JoinButton>회원가입</JoinButton>
+        <JoinButton onClick={joinHandler}>회원가입</JoinButton>
       </ButtonContainer>
       <SignUpText>
-        아이디가 있으신가요? &nbsp;<SignUpLink to='/join'>로그인</SignUpLink>
+        아이디가 있으신가요? &nbsp;
+        <SignUpLink to='/join' onClick={onToggleLogin}>
+          로그인
+        </SignUpLink>
       </SignUpText>
     </JoinForm>
   );
@@ -35,19 +75,19 @@ const JoinForm = styled.form`
   justify-content: center;
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-`;
+// const CloseButton = styled.button`
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+//   background: none;
+//   border: none;
+//   font-size: 15px;
+//   cursor: pointer;
+// `;
 
 const JoinText = styled.div`
   height: 50px;
-  margin-bottom: 20px;
+  /* margin-bottom: 30px; */
   font-size: 30px;
   text-align: center;
 `;

@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { setLogin } from 'redux/modules/authSlice';
 
 export default function LoginModal({ onToggleJoin }) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const LoginHandler = (e) => {
-    e.preventDefault();
+  const dispatch = useDispatch();
+
+  const LoginHandler = () => {
     if (id.length < 4 || password.length < 4) {
       return alert('4자 이상 입력하세요.');
     }
+    dispatch(setLogin());
   };
+
   return (
-    <LoginForm>
+    <LoginForm
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+    >
       {/* <CloseButton>X</CloseButton> */}
       <LoginText>로그인</LoginText>
       <InputInfo
@@ -33,6 +42,7 @@ export default function LoginModal({ onToggleJoin }) {
           setPassword(event.target.value);
         }}
       ></InputInfo>
+
       <ButtonContainer>
         <LoginButton onClick={LoginHandler}>로그인</LoginButton>
       </ButtonContainer>

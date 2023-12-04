@@ -6,8 +6,7 @@ export default function JoinModal({ onToggleLogin }) {
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
 
-  const joinHandler = (e) => {
-    e.preventDefault();
+  const joinHandler = () => {
     if (id.length < 4 || password.length < 4) {
       return alert('4자 이상 입력하세요.');
     } else if (nickname.length < 1) {
@@ -16,7 +15,11 @@ export default function JoinModal({ onToggleLogin }) {
   };
 
   return (
-    <JoinForm>
+    <JoinForm
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+    >
       {/* <CloseButton>X</CloseButton> */}
       <JoinText>회원가입</JoinText>
       <InputInfo

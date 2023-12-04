@@ -1,21 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import fakeData from 'fakeData.json';
-// 팬레터 추가
-// const ADD_LETTER = "letters/ADD_LETTER";
-// // 팬레터 삭제
-// const DELETE_LETTER = "letters/DELETE_LETTER";
-// // 팬레터 수정
-// const EDIT_LETTER = "letters/EDIT_LETTER";
-
-// export const addLetter = (payload) => {
-//   return { type: ADD_LETTER, payload };
-// };
-// export const deleteLetter = (payload) => {
-//   return { type: DELETE_LETTER, payload };
-// };
-// export const editLetter = (payload) => {
-//   return { type: EDIT_LETTER, payload };
-// };
 
 const initialState = fakeData;
 const aespaSlice = createSlice({
@@ -43,6 +27,22 @@ const aespaSlice = createSlice({
 export const { addLetter, deleteLetter, editLetter } = aespaSlice.actions;
 export default aespaSlice.reducer;
 
+// 팬레터 추가
+// const ADD_LETTER = "letters/ADD_LETTER";
+// // 팬레터 삭제
+// const DELETE_LETTER = "letters/DELETE_LETTER";
+// // 팬레터 수정
+// const EDIT_LETTER = "letters/EDIT_LETTER";
+
+// export const addLetter = (payload) => {
+//   return { type: ADD_LETTER, payload };
+// };
+// export const deleteLetter = (payload) => {
+//   return { type: DELETE_LETTER, payload };
+// };
+// export const editLetter = (payload) => {
+//   return { type: EDIT_LETTER, payload };
+// };
 // reducer
 // const letters = (state = initialState, action) => {
 //   switch (action.type) {

@@ -1,11 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// const SET_MEMBER = 'member/SET_MEMBER';
-
-// export const setMember = (payload) => {
-//   return { type: SET_MEMBER, payload };
-// };
-
 const initialState = '카리나';
 
 const memberSlice = createSlice({
@@ -17,6 +11,13 @@ const memberSlice = createSlice({
     },
   },
 });
+export const { setMember } = memberSlice.actions;
+export default memberSlice.reducer;
+// const SET_MEMBER = 'member/SET_MEMBER';
+
+// export const setMember = (payload) => {
+//   return { type: SET_MEMBER, payload };
+// };
 
 // const member = (state = initialState, action) => {
 //   switch (action.type) {
@@ -27,5 +28,3 @@ const memberSlice = createSlice({
 //       return state;
 //   }
 // };
-export const { setMember } = memberSlice.actions;
-export default memberSlice.reducer;

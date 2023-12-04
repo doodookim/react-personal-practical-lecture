@@ -1,4 +1,5 @@
-import Router from "shared/Router";
+import { useSelector } from 'react-redux';
+import Router from 'shared/Router';
 
 function App() {
   return <Router />;
